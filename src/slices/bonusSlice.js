@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  amount: 1,
+  points: 0,
 }
 
-export const accountSlice = createSlice({
-  name: 'account',
+export const bonusSlice = createSlice({
+  name: 'bonus',
   initialState,
   reducers: {
     increment: (state) => {
@@ -13,19 +13,13 @@ export const accountSlice = createSlice({
       // doesn't actually mutate the state because it uses the Immer library,
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
-      state.amount += 1
-    },
-    decrement: (state) => {
-      state.amount -= 1
-    },
-    incrementByAmount: (state, action) => {
-      state.amount += action.payload
-    },
+      state.points += 1
+    }
   },
 })
 
 // Action creators are generated for each case reducer function
 //should match with the functions specified in the reducers exactly
-export const { increment, decrement, incrementByAmount } = accountSlice.actions
+export const { increment} = bonusSlice.actions
 
-export default accountSlice.reducer
+export default bonusSlice.reducer
