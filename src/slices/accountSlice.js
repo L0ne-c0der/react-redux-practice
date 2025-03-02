@@ -36,8 +36,14 @@ export const accountSlice = createSlice({
     builder
     .addCase(getUserAccount.fulfilled, (state, action) => {
         state.amount = action.payload
-  });
-}
+        state.pending = false
+  }) .addCase(getUserAccount.pending, (state, action) => {
+      state.pending = true
+  }) .addCase(getUserAccount.rejected, (state, action) => {
+        state.error = action.error.message
+        state.pending = false
+  })
+ }
 })
 
 // Action creators are generated for each case reducer function
