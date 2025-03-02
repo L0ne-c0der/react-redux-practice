@@ -4,6 +4,8 @@ import { increment, decrement, incrementByAmount } from '../slices/accountSlice'
 import { getUserAccount } from '../slices/accountSlice';
 function Account() {
   const amount = useSelector(state => state.account.amount);
+  const pending = useSelector(state => state.account.pending);
+  const error = useSelector(state => state.account.error);
   const dispatch = useDispatch();
   const [value, setValue] = useState(0);
 
@@ -13,7 +15,7 @@ function Account() {
         <h4>
           <b>Account Component</b>
         </h4>
-        <h3>Amount:${amount}</h3>
+        <h3>Amount: </h3>{pending ? (<p>Loading...</p>) : error ? (<p>{error.message}</p>) : (<h3>${amount}</h3>)} 
         <button onClick={() => dispatch(increment())}>Increment +</button>
         <button onClick={() => dispatch(decrement())}>Decrement -</button>
         <input type="text" onChange={(e) => setValue(+e.target.value)}></input>

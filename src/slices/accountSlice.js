@@ -40,7 +40,7 @@ export const accountSlice = createSlice({
   }) .addCase(getUserAccount.pending, (state, action) => {
       state.pending = true
   }) .addCase(getUserAccount.rejected, (state, action) => {
-        state.error = action.error.message
+        state.error = action.error
         state.pending = false
   })
  }
